@@ -140,3 +140,39 @@ add_filter('show_admin_bar', '__return_false');
 
 /* Custom content types */
 
+function register_custom_posts_init() {
+
+    // Register Technologies
+    $cpt_labels = array(
+        'name' => 'Products',
+        'singular_name' => 'Product',
+        'menu_name' => 'Products',
+        'add_new_item' => 'Add New Product',
+        'edit_item' => 'Edit Product',
+        'new_item' => 'New Product',
+        'view_item' => 'View Product',
+        'search_items' => 'Search Products',
+        'not_found' => 'No Products found',
+        'not_found_in_trash' => 'No Products found in Trash'
+    );
+    $cpt_args = array(
+        'labels'            => $cpt_labels,
+        'public'            => true,
+        'capability_type'   => 'post',
+        'has_archive'       => true,
+        'rewrite'           => array('slug' => 'products'),
+        'supports' => array('title', 'editor', 'revisions', 'thumbnail'),
+        'taxonomies' => array('category'),
+        'menu_icon' => 'dashicons-screenoptions'
+    );
+    register_post_type('products', $cpt_args);
+    
+    
+    
+    /* Remove for production */
+    
+    flush_rewrite_rules();
+    
+}
+
+add_action('init', 'register_custom_posts_init');
