@@ -167,7 +167,55 @@ function register_custom_posts_init() {
     );
     register_post_type('products', $cpt_args);
     
+    // Register Solutions
+    $cpt_labels = array(
+        'name' => 'Solutions',
+        'singular_name' => 'Solution',
+        'menu_name' => 'Solutions',
+        'add_new_item' => 'Add New Solution',
+        'edit_item' => 'Edit Solution',
+        'new_item' => 'New Solution',
+        'view_item' => 'View Solution',
+        'search_items' => 'Search Solutions',
+        'not_found' => 'No Solutions found',
+        'not_found_in_trash' => 'No Solutions found in Trash'
+    );
+    $cpt_args = array(
+        'labels'            => $cpt_labels,
+        'public'            => true,
+        'capability_type'   => 'post',
+        'has_archive'       => true,
+        'rewrite'           => array('slug' => 'solutions'),
+        'supports' => array('title', 'editor', 'revisions', 'thumbnail'),
+        'taxonomies' => array('category'),
+        'menu_icon' => 'dashicons-admin-generic'
+    );
+    register_post_type('solutions', $cpt_args);
     
+    // Register Technology
+    $cpt_labels = array(
+        'name' => 'Technology',
+        'singular_name' => 'Technology',
+        'menu_name' => 'Technology',
+        'add_new_item' => 'Add New Technology',
+        'edit_item' => 'Edit Technology',
+        'new_item' => 'New Technology',
+        'view_item' => 'View Technology',
+        'search_items' => 'Search Technology',
+        'not_found' => 'No Technology found',
+        'not_found_in_trash' => 'No Technology found in Trash'
+    );
+    $cpt_args = array(
+        'labels'            => $cpt_labels,
+        'public'            => true,
+        'capability_type'   => 'post',
+        'has_archive'       => true,
+        'rewrite'           => array('slug' => 'technology'),
+        'supports' => array('title', 'editor', 'revisions', 'thumbnail'),
+        'taxonomies' => array('category'),
+        'menu_icon' => 'dashicons-admin-generic'
+    );
+    register_post_type('technology', $cpt_args);
     
     /* Remove for production */
     
